@@ -21,6 +21,7 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
+  gem 'fast_jsonapi'
   gem 'launchy'
   gem 'pry'
   gem 'shoulda-matchers'
