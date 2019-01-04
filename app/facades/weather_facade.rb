@@ -21,10 +21,9 @@ class WeatherFacade
       day.summary
     end
   end
-  
+
   def weather_data
     data = DarkSkyService.new(lat,lng).get_weather
-    binding.pry
     CurrentWeather.new(data)
   end
 

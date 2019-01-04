@@ -5,35 +5,41 @@ class GiphyFacade
   end
 
   def gif_objects
-    gif_data.map do |gif|
-      Gif.new(gif[:data][0][:url])
+    zip.map do |data|
+      Gif.new(data)
     end
   end
 
+  def zip
+    daily_summary.zip(daily_time, gif_data)
+  end
+
   def gif_data #gives giphy api data for gifs based on summary
-    daily_gif = []
+    arr = []
     daily_summary.map do |summary|
       GiphyService.new.get_gifs(summary)
     end.map do |data|
       data[:data].map do |gif|
-        daily_gif << gif[:url]
+        arr << gif[:url]
       end
     end
+    arr[0..7]
   end
 
   def daily_summary
-    daily_summary = []
+    arr = []
     daily_data.map do |day|
-      daily_summary << day[:summary]
-      binding.pry
+      arr << day[:summary]
     end
+    arr[0..7]
   end
 
   def daily_time
-    daily_time = []
+    arr = []
     daily_data.map do |day|
-      daily_time << day[:time]
+      arr << day[:time]
     end
+    arr[0..7]
   end
 
   def daily_data #array of summaries

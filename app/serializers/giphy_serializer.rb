@@ -1,19 +1,6 @@
 class GiphySerializer
   include FastJsonapi::ObjectSerializer
-  set_type :current_weather
-  attributes :daily, :time
-
-  def gifs
-    binding.pry
-    {gif_objects: make_gif
-
-    }
-  end
-
-  def make_gif
-    binding.pry
-    WeatherFacade.new(object.location).gif_objects
-  end
+  attributes :summary, :time, :url
 end
 
 # def asteroid
