@@ -14,7 +14,7 @@ class GiphyFacade
     daily_summary.zip(daily_time, gif_data)
   end
 
-  def gif_data #gives giphy api data for gifs based on summary
+  def gif_data #returns array of gif urls
     arr = []
     daily_summary.map do |summary|
       GiphyService.new.get_gifs(summary)
@@ -26,7 +26,7 @@ class GiphyFacade
     arr[0..7]
   end
 
-  def daily_summary
+  def daily_summary #returns array of summaries
     arr = []
     daily_data.map do |day|
       arr << day[:summary]
@@ -34,7 +34,7 @@ class GiphyFacade
     arr[0..7]
   end
 
-  def daily_time
+  def daily_time #returns array of times
     arr = []
     daily_data.map do |day|
       arr << day[:time]
@@ -42,7 +42,7 @@ class GiphyFacade
     arr[0..7]
   end
 
-  def daily_data #array of summaries
+  def daily_data
     data = DarkSkyService.new(lat,lng).get_weather[:daily][:data]
   end
 

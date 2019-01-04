@@ -28,8 +28,6 @@ class CurrentWeather
     @id               = id
   end
 
-
-
   def hour(hour_data)
     hour_data[0..7].map do |data|
       HourlyWeather.new(data)
