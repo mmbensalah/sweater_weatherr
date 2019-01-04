@@ -1,4 +1,4 @@
-class WeatherFacade
+class GiphyFacade
   attr_reader :location
   def initialize(location)
     @location = location
@@ -11,21 +11,33 @@ class WeatherFacade
   end
 
   def gif_data #gives giphy api data for gifs based on summary
+    daily_gif = []
     daily_summary.map do |summary|
       GiphyService.new.get_gifs(summary)
+    end.map do |data|
+      data[:data].map do |gif|
+        daily_gif << gif[:url]
+      end
     end
   end
 
-  def daily_summary #gives daily summary
-    weather_data.daily.map do |day|
-      day.summary
+  def daily_summary
+    daily_summary = []
+    daily_data.map do |day|
+      daily_summary << day[:summary]
+      binding.pry
     end
   end
-  
-  def weather_data
-    data = DarkSkyService.new(lat,lng).get_weather
-    binding.pry
-    CurrentWeather.new(data)
+
+  def daily_time
+    daily_time = []
+    daily_data.map do |day|
+      daily_time << day[:time]
+    end
+  end
+
+  def daily_data #array of summaries
+    data = DarkSkyService.new(lat,lng).get_weather[:daily][:data]
   end
 
   def lat

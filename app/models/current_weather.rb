@@ -28,6 +28,8 @@ class CurrentWeather
     @id               = id
   end
 
+
+
   def hour(hour_data)
     hour_data[0..7].map do |data|
       HourlyWeather.new(data)
@@ -38,6 +40,10 @@ class CurrentWeather
     daily_data[0..4].map do |data|
       DailyWeather.new(data)
     end
+  end
+
+  def gif_data
+
   end
 
   def current_time
