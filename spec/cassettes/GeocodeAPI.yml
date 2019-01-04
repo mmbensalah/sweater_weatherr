@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://maps.googleapis.com/maps/api/geocode/json?address=1331%2017th%20Street,%20Denver,%20CO&key=<GOOGLE_GEOCODE_API>
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=Denver,%20CO&key=<GOOGLE_GEOCODE_API>
     body:
       encoding: US-ASCII
       string: ''
@@ -21,9 +21,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Thu, 03 Jan 2019 21:09:28 GMT
+      - Thu, 03 Jan 2019 21:42:19 GMT
       Expires:
-      - Fri, 04 Jan 2019 21:09:28 GMT
+      - Fri, 04 Jan 2019 21:42:19 GMT
       Cache-Control:
       - public, max-age=86400
       Vary:
@@ -33,13 +33,13 @@ http_interactions:
       Server:
       - mafe
       Content-Length:
-      - '569'
+      - '448'
       X-Xss-Protection:
       - 1; mode=block
       X-Frame-Options:
       - SAMEORIGIN
       Server-Timing:
-      - gfet4t7; dur=37
+      - gfet4t7; dur=39
       Alt-Svc:
       - quic=":443"; ma=2592000; v="44,43,39,35"
     body:
@@ -49,21 +49,6 @@ http_interactions:
            "results" : [
               {
                  "address_components" : [
-                    {
-                       "long_name" : "1331",
-                       "short_name" : "1331",
-                       "types" : [ "street_number" ]
-                    },
-                    {
-                       "long_name" : "17th Street",
-                       "short_name" : "17th St",
-                       "types" : [ "route" ]
-                    },
-                    {
-                       "long_name" : "Central",
-                       "short_name" : "Central",
-                       "types" : [ "neighborhood", "political" ]
-                    },
                     {
                        "long_name" : "Denver",
                        "short_name" : "Denver",
@@ -83,47 +68,42 @@ http_interactions:
                        "long_name" : "United States",
                        "short_name" : "US",
                        "types" : [ "country", "political" ]
-                    },
-                    {
-                       "long_name" : "80202",
-                       "short_name" : "80202",
-                       "types" : [ "postal_code" ]
                     }
                  ],
-                 "formatted_address" : "1331 17th St, Denver, CO 80202, USA",
+                 "formatted_address" : "Denver, CO, USA",
                  "geometry" : {
                     "bounds" : {
                        "northeast" : {
-                          "lat" : 39.7511053,
-                          "lng" : -104.9961838
+                          "lat" : 39.91424689999999,
+                          "lng" : -104.6002959
                        },
                        "southwest" : {
-                          "lat" : 39.7505744,
-                          "lng" : -104.9968748
+                          "lat" : 39.614431,
+                          "lng" : -105.109927
                        }
                     },
                     "location" : {
-                       "lat" : 39.7507834,
-                       "lng" : -104.9964355
+                       "lat" : 39.7392358,
+                       "lng" : -104.990251
                     },
-                    "location_type" : "ROOFTOP",
+                    "location_type" : "APPROXIMATE",
                     "viewport" : {
                        "northeast" : {
-                          "lat" : 39.7521888302915,
-                          "lng" : -104.9951803197085
+                          "lat" : 39.91424689999999,
+                          "lng" : -104.6002959
                        },
                        "southwest" : {
-                          "lat" : 39.7494908697085,
-                          "lng" : -104.9978782802915
+                          "lat" : 39.614431,
+                          "lng" : -105.109927
                        }
                     }
                  },
-                 "place_id" : "ChIJYX36R9t4bIcReTKjF7s1uXU",
-                 "types" : [ "premise" ]
+                 "place_id" : "ChIJzxcfI6qAa4cR1jaKJ_j0jhE",
+                 "types" : [ "locality", "political" ]
               }
            ],
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Thu, 03 Jan 2019 21:09:28 GMT
+  recorded_at: Thu, 03 Jan 2019 21:42:19 GMT
 recorded_with: VCR 4.0.0

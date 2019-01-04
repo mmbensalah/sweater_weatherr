@@ -9,8 +9,8 @@ describe 'Geocode Service' do
   end
 
   it 'returns lat and long' do
-    VCR.use_cassette 'GeocodeLatLong' do
-      address = '1331 17th Street, Denver, CO'
+    VCR.use_cassette 'GeocodeAPI' do
+      address = 'Denver, CO'
 
       service = GeocodeService.new(address)
       coord = service.get_coord
@@ -18,8 +18,8 @@ describe 'Geocode Service' do
       lng = coord[:results][0][:geometry][:location][:lng]
 
       expect(coord).to have_key(:results)
-      expect(lat).to eq(39.7507834)
-      expect(lng).to eq(-104.9964355)
+      expect(lat).to eq(39.7392358)
+      expect(lng).to eq(-104.990251)
     end
   end
 end

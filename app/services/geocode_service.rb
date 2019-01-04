@@ -4,6 +4,14 @@ class GeocodeService
     @address = address
   end
 
+  def get_lat
+    get_coord[:results][0][:geometry][:location][:lat]
+  end
+
+  def get_lng
+    get_coord[:results][0][:geometry][:location][:lng]
+  end
+
   def get_coord
     to_json("/maps/api/geocode/json?address=#{@address}&key=#{ENV["GOOGLE_GEOCODE_API"]}")
   end
