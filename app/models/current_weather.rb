@@ -40,6 +40,10 @@ class CurrentWeather
     end
   end
 
+  def gif_data
+
+  end
+
   def current_time
     DateTime.strptime(@current_time.to_s, '%s')
   end
