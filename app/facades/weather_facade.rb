@@ -4,6 +4,11 @@ class WeatherFacade
     @location = location
   end
 
+  def get_gifs
+    weather_data
+    binding.pry
+  end
+
   def weather_data
     data = DarkSkyService.new(lat,lng).get_weather
     CurrentWeather.new(data)
