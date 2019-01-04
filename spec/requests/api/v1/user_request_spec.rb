@@ -7,7 +7,7 @@ describe 'POST /users' do
             password_confirmation: '12345'
             }
 
-    post "/api/v1/users", params: {user: data}
+    post "/api/v1/users", params: data
 
     expect(response.status).to eq(201)
     key = JSON.parse(response.body)
