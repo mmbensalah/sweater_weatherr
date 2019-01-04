@@ -10,13 +10,15 @@ describe 'Dark Sky API Service' do
   end
 
   it 'returns weather for lat and lng' do
-    lat = '39.7507834'
-    lng = '-104.9964355'
-    service = DarkSkyService.new(lat, lng)
-    data = service.get_weather
-    
-    expect(data).to have_key(:latitude)
-    expect(data).to have_key(:longitude)
-    expect(data).to have_key(:currently)
+    VCR.use_cassette 'DarkSkyAPI' do
+      lat = '39.7507834'
+      lng = '-104.9964355'
+      service = DarkSkyService.new(lat, lng)
+      data = service.get_weather
+
+      expect(data).to have_key(:latitude)
+      expect(data).to have_key(:longitude)
+      expect(data).to have_key(:currently)
+    end
   end
 end

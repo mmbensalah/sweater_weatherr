@@ -5,7 +5,7 @@ describe 'GET /weather' do
     location = 'denver,co'
 
     get "/api/v1/forecast?location=#{location}"
-
+binding.pry
     expect(response).to be_successful
   end
 end
