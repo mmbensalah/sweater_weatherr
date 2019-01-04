@@ -4,9 +4,18 @@ class WeatherFacade
     @location = location
   end
 
-  def get_gifs
-    weather_data
-    binding.pry
+  def gif_objects
+    gif_data.map do |gif|
+      gif[:data][0][:url]
+    end
+  end
+
+  def gif_data
+    weather_data.daily.map do |day|
+      day.summary
+    end.map do |summary|
+      GiphyService.new.get_gifs(summary)
+    end
   end
 
   def weather_data

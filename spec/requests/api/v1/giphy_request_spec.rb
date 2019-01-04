@@ -10,6 +10,6 @@ describe 'GET /api/v1/gifs?location=denver,co' do
     parsed_response = JSON.parse(response.body)
 
     expect(parsed_response).to have_key(:data)
-    expect(parsed_response[:data][:daily_forecasts][0][url]).to eq("/") 
+    expect(parsed_response[:data][:daily_forecasts][0][url]).to eq("/")
   end
 end
