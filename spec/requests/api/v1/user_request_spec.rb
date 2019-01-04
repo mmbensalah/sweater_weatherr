@@ -8,8 +8,9 @@ describe 'POST /users' do
             }
 
     post "/api/v1/users", params: {user: data}
-binding.pry
-    expect(response).to eq(201)
 
+    expect(response.status).to eq(201)
+    key = JSON.parse(response.body)
+    expect(key["data"]["attributes"]["api_key"]).to eq(User.last.api_key)
   end
 end

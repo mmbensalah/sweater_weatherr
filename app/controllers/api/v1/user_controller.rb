@@ -5,7 +5,7 @@ class Api::V1::UserController < ApplicationController
     if saved
       user.update(api_key: user.create_api_key)
     end
-    render json: UserSerializer.new(user)
+    render json: UserSerializer.new(user), status: 201
   end
 
   private
