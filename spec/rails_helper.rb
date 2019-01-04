@@ -64,6 +64,7 @@ RSpec.configure do |config|
     config.configure_rspec_metadata!
     config.filter_sensitive_data("<GOOGLE_GEOCODE_API>") { ENV['GOOGLE_GEOCODE_API'] }
     config.filter_sensitive_data("<DARK_SKY_API>") { ENV['DARK_SKY_API'] }
+    config.filter_sensitive_data("<GIPHY_API>") { ENV['GIPHY_API'] }
    end
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
