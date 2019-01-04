@@ -3,7 +3,7 @@ class HourlyWeather
 
   def initialize(data)
     @temp = data[:temperature]
-    @time = data[:time]
+    @time = DateTime.strptime(data[:time].to_s, '%s')
     @icon = data[:icon]
   end
 end

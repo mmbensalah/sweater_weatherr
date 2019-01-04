@@ -6,7 +6,7 @@ class DailyWeather
               :temp_high
 
   def initialize(data)
-    @time          = data[:time]
+    @time          = DateTime.strptime(data[:time].to_s, '%s')
     @icon          = data[:icon]
     @rain_prob     = data[:precipProbability]
     @temp_low      = data[:temperatureLow]
