@@ -13,7 +13,7 @@ describe 'Weather Facade' do
       location = 'Denver, CO'
       weather = WeatherFacade.new(location).weather_data
 
-      expect(weather).to be_an_instance_of(Weather)
+      expect(weather).to be_an_instance_of(CurrentWeather)
       expect(weather.current_summary).to eq("Clear")
       expect(weather.current_temp).to eq(53.27)
     end
