@@ -1,3 +1,4 @@
+require 'date'
 class CurrentWeather
   attr_reader :forecast,
               :current_temp,
@@ -37,5 +38,13 @@ class CurrentWeather
     daily_data[0..4].map do |data|
       DailyWeather.new(data)
     end
+  end
+
+  def current_time
+    DateTime.strptime(@current_time.to_s, '%s')
+  end
+
+  def humidity
+    @humidity * 100
   end
 end
