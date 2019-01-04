@@ -6,17 +6,28 @@ class WeatherFacade
 
   def gif_objects
     gif_data.map do |gif|
-      gif[:data][0][:url]
+      Gif.new(gif[:data][0][:url])
     end
   end
 
-  def gif_data
-    weather_data.daily.map do |day|
-      day.summary
-    end.map do |summary|
+  def gif_data #gives giphy api data for gifs based on summary
+    daily_summary.map do |summary|
       GiphyService.new.get_gifs(summary)
     end
   end
+
+  def daily_summary #gives daily summary
+    weather_data.daily.map do |day|
+      day.summary
+    end
+  end
+
+  def daily_time #gives daily time
+    weather_data.daily.map do |day|
+      day.time
+    end
+  end
+
 
   def weather_data
     data = DarkSkyService.new(lat,lng).get_weather
