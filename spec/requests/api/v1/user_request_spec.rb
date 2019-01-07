@@ -18,12 +18,11 @@ describe 'POST /users' do
   it 'creates new user session for created user' do
 
     user = User.create(email: 'email@gmail.com', password: '12345', password_confirmation: '12345', api_key: 'abc123')
+    # data = {email: 'email@gmail.com',
+    #         password: '12345'
+    #         }
 
-    data = {email: 'email@gmail.com',
-            password: '12345'
-            }
-
-    post "/api/v1/sessions", params: data
+    post "/api/v1/sessions?email=email@gmail.com&password=12345"
 
     expect(response.status).to eq(200)
     parsed_response = JSON.parse(response.body)
