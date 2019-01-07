@@ -28,12 +28,11 @@ describe 'POST /api/v1/favorites' do
   end
 
   it 'retrieves a users favorite locations with their api key' do
-    user = User.create(email: 'email@gmail.com', password: '12345', password_confirmation: '12345', api_key: 'abc123')
+    user       = User.create(email: 'email@gmail.com', password: '12345', password_confirmation: '12345', api_key: 'abc123')
     location   = 'Denver, CO'
     location_1 = 'Golden, CO'
-
-    fav   = user.favorites.create(location: location)
-    fav_1 = user.favorites.create(location: location_1)
+    fav        = user.favorites.create(location: location)
+    fav_1      = user.favorites.create(location: location_1)
 
     params = { api_key: user.api_key }
 
@@ -48,16 +47,34 @@ describe 'POST /api/v1/favorites' do
   end
 
   it 'does not retrieves a users favorite locations without their api key' do
-    user = User.create(email: 'email@gmail.com', password: '12345', password_confirmation: '12345', api_key: 'abc123')
+    user       = User.create(email: 'email@gmail.com', password: '12345', password_confirmation: '12345', api_key: 'abc123')
     location   = 'Denver, CO'
     location_1 = 'Golden, CO'
-
-    fav   = user.favorites.create(location: location)
-    fav_1 = user.favorites.create(location: location_1)
+    fav        = user.favorites.create(location: location)
+    fav_1      = user.favorites.create(location: location_1)
 
     get "/api/v1/favorites"
 
     expect(response.status).to eq(401)
     expect(response.body).to eq('')
+  end
+
+  it 'deletes a users favorite location' do
+    user       = User.create(email: 'email@gmail.com', password: '12345', password_confirmation: '12345', api_key: 'abc123')
+    location   = 'Denver, CO'
+    location_1 = 'Golden, CO'
+    fav        = user.favorites.create(location: location)
+    fav_1      = user.favorites.create(location: location_1)
+
+    data = { location: "Denver, CO",
+            api_key: user.api_key
+            }
+
+    delete "/api/v1/favorites", params: data
+
+    parsed_response = JSON.parse(response.body)
+
+    expect(response.status).to eq(200)
+    expect(parsed_response["data"].count).to eq(1)
   end
 end
