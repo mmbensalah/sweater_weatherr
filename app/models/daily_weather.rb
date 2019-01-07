@@ -1,3 +1,4 @@
+require 'date'
 class DailyWeather
   attr_reader :time,
               :icon,
