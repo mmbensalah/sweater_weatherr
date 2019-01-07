@@ -17,6 +17,14 @@ class Api::V1::FavoriteController < ApplicationController
     end
   end
 
+  def destroy
+    favorite = Favorite.find_by(location: params[:location])
+    favorite.destroy
+    locations = Favorite.where(user_id: user.id)
+    fav_weather_obj = fav_weather(locations)
+    render json: FavLocWeatherSerializer.new(fav_weather_obj)
+  end
+
   private
 
   def user
