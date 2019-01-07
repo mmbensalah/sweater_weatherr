@@ -1,3 +1,4 @@
+require 'date'
 class HourlyWeather
   attr_reader :temp, :time, :icon
 
