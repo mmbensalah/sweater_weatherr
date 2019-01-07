@@ -17,20 +17,6 @@ class Api::V1::FavoriteController < ApplicationController
     end
   end
 
-  # FavLocWeatherFacade.new("Denver, CO").fav_weather
-
-  #   if params[:api_key]
-  #     favorites = Favorite.where(user_id: user.id)
-  #     x = favorites.map do |f|
-  #           f.location
-  #         end
-  #
-  #     render json: FavoriteSerializer.new(favorites)
-  #   else
-  #     render body: nil, status: :unauthorized
-  #   end
-  # end
-
   private
 
   def user
