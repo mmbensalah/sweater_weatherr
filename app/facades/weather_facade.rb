@@ -6,7 +6,7 @@ class WeatherFacade
 
   def weather_data
     data = DarkSkyService.new(lat,lng).get_weather
-    CurrentWeather.new(data)
+    CurrentWeather.new(@location, data)
   end
 
   def lat

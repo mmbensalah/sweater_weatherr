@@ -7,5 +7,7 @@ describe 'GET /weather' do
     get "/api/v1/forecast?location=#{location}"
 
     expect(response).to be_successful
+    parsed_response = JSON.parse(response.body)
+    expect(parsed_response["data"]["id"]).to eq('denver,co')
   end
 end
