@@ -65,7 +65,7 @@ describe 'POST /api/v1/favorites' do
     location_1 = 'Golden, CO'
     fav        = user.favorites.create(location: location)
     fav_1      = user.favorites.create(location: location_1)
-
+binding.pry
     data = { location: "Denver, CO",
             api_key: user.api_key
             }

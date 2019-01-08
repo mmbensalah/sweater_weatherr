@@ -1,6 +1,6 @@
 class WeatherSerializer
   include FastJsonapi::ObjectSerializer
-
+  set_id     :location
   attributes :forecast,
              :current_temp,
              :feels_like,

@@ -1,6 +1,7 @@
 require 'date'
 class CurrentWeather
-  attr_reader :forecast,
+  attr_reader :location,
+              :forecast,
               :current_temp,
               :feels_like,
               :current_time,
@@ -9,10 +10,10 @@ class CurrentWeather
               :uv,
               :current_summary,
               :hourly,
-              :daily,
-              :id
+              :daily
 
-  def initialize(data)
+  def initialize(location, data)
+    @location         = location
     @forecast         = data[:currently][:summary]
     @current_temp     = data[:currently][:temperature]
     @temp_high        = data[:daily][:data][0][:temperatureHigh]
@@ -25,7 +26,6 @@ class CurrentWeather
     @current_summary  = data[:currently][:summary]
     @hourly           = hour(data[:hourly][:data])
     @daily            = day(data[:daily][:data])
-    @id               = id
   end
 
   def hour(hour_data)
