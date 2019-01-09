@@ -56,7 +56,7 @@ describe 'POST /api/v1/favorites' do
     get "/api/v1/favorites"
 
     expect(response.status).to eq(401)
-    expect(response.body).to eq('')
+    expect(response.body).to eq("{\"message\":\"Invalid Credentials\"}")
   end
 
   it 'deletes a users favorite location' do
