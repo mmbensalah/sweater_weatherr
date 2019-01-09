@@ -1,21 +1,22 @@
 require 'rails_helper'
 
 describe 'POST /api/v1/favorites' do
-  it 'creates a favorite location object for user' do
-    user = User.create(email: 'email@gmail.com', password: '12345', password_confirmation: '12345', api_key: 'abc123')
-    location = 'Denver, CO'
+  before(:each) do
+    @user = User.create(email: 'email@gmail.com', password: '12345', password_confirmation: '12345')
+  end
 
+  it 'creates a favorite location object for user' do
+    location = 'Durango, CO'
     data = {location: location,
-            api_key:  user.api_key
+            api_key:  @user.api_key
            }
 
     post "/api/v1/favorites", params: data
-
-    expect(Favorite.last.user_id).to eq(user.id)
+    expect(Favorite.last.user_id).to eq(@user.id)
+    expect(Favorite.last.location).to eq(location)
   end
 
   it 'does not create a favorite location for user without api key' do
-    user = User.create(email: 'email@gmail.com', password: '12345', password_confirmation: '12345', api_key: 'abc123')
     location = 'Denver, CO'
 
     data = {location: location
@@ -28,15 +29,14 @@ describe 'POST /api/v1/favorites' do
   end
 
   it 'retrieves a users favorite locations with their api key' do
-    user       = User.create(email: 'email@gmail.com', password: '12345', password_confirmation: '12345', api_key: 'abc123')
     location   = 'Denver, CO'
     location_1 = 'Golden, CO'
-    fav        = user.favorites.create(location: location)
-    fav_1      = user.favorites.create(location: location_1)
+    fav        = @user.favorites.create(location: location)
+    fav_1      = @user.favorites.create(location: location_1)
 
-    params = { api_key: user.api_key }
+    params = { api_key: @user.api_key }
 
-    get "/api/v1/favorites?api_key=#{user.api_key}"
+    get "/api/v1/favorites?api_key=#{@user.api_key}"
 
     expect(response.status).to eq(200)
 
@@ -47,11 +47,10 @@ describe 'POST /api/v1/favorites' do
   end
 
   it 'does not retrieves a users favorite locations without their api key' do
-    user       = User.create(email: 'email@gmail.com', password: '12345', password_confirmation: '12345', api_key: 'abc123')
     location   = 'Denver, CO'
     location_1 = 'Golden, CO'
-    fav        = user.favorites.create(location: location)
-    fav_1      = user.favorites.create(location: location_1)
+    fav        = @user.favorites.create(location: location)
+    fav_1      = @user.favorites.create(location: location_1)
 
     get "/api/v1/favorites"
 
@@ -60,14 +59,13 @@ describe 'POST /api/v1/favorites' do
   end
 
   it 'deletes a users favorite location' do
-    user       = User.create(email: 'email@gmail.com', password: '12345', password_confirmation: '12345', api_key: 'abc123')
     location   = 'Denver, CO'
     location_1 = 'Golden, CO'
-    fav        = user.favorites.create(location: location)
-    fav_1      = user.favorites.create(location: location_1)
+    fav        = @user.favorites.create(location: location)
+    fav_1      = @user.favorites.create(location: location_1)
 
     data = { location: "Denver, CO",
-            api_key: user.api_key
+            api_key: @user.api_key
             }
 
     delete "/api/v1/favorites", params: data
