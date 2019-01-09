@@ -2,6 +2,7 @@ class Api::V1::FavoriteController < ApplicationController
   def create
     if params[:api_key]
       Favorite.create(user_id: user.id, location: params[:location])
+      render json: { message: 'Favorite Location Created' }, status: 200
     else
       invalid_credentials
     end
