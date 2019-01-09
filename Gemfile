@@ -12,6 +12,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'faraday'
+gem 'fast_jsonapi'
 gem 'figaro'
 gem 'bcrypt'
 
@@ -22,7 +23,6 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
-  gem 'fast_jsonapi'
   gem 'launchy'
   gem 'pry'
   gem 'shoulda-matchers'
