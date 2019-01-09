@@ -3,7 +3,7 @@ class Api::V1::FavoriteController < ApplicationController
     if params[:api_key]
       Favorite.create(user_id: user.id, location: params[:location])
     else
-      render body: nil, status: :unauthorized
+      invalid_credentials
     end
   end
 
@@ -12,7 +12,7 @@ class Api::V1::FavoriteController < ApplicationController
       favorites = Favorite.where(user_id: user.id)
       render json: WeatherSerializer.new(favorite_weather(favorites))
     else
-      render body: nil, status: :unauthorized
+      invalid_credentials
     end
   end
 
