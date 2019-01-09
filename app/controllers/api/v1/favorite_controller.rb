@@ -9,9 +9,8 @@ class Api::V1::FavoriteController < ApplicationController
 
   def index
     if params[:api_key]
-      locations = Favorite.where(user_id: user.id)
-      fav_weather_obj = fav_weather(locations)
-      render json: FavLocWeatherSerializer.new(fav_weather_obj)
+      favorites = Favorite.where(user_id: user.id)
+      render json: WeatherSerializer.new(favorite_weather(favorites))
     else
       render body: nil, status: :unauthorized
     end
@@ -20,9 +19,8 @@ class Api::V1::FavoriteController < ApplicationController
   def destroy
     favorite = Favorite.find_by(location: params[:location])
     favorite.destroy
-    locations = Favorite.where(user_id: user.id)
-    fav_weather_obj = fav_weather(locations)
-    render json: FavLocWeatherSerializer.new(fav_weather_obj)
+    favorites = Favorite.where(user_id: user.id)
+    render json: WeatherSerializer.new(favorite_weather(favorites))
   end
 
   private
@@ -31,10 +29,9 @@ class Api::V1::FavoriteController < ApplicationController
     User.find_by(api_key: params[:api_key])
   end
 
-  def fav_weather(favorites)
+  def favorite_weather(favorites)
     favorites.map do |f|
-      cw = WeatherFacade.new(f.location).weather_data
-           FavWeather.new(f.location, cw)
-      end
+      WeatherFacade.new(f.location).weather_data
+    end
   end
 end
