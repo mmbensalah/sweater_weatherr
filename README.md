@@ -7,19 +7,20 @@ Fourth and final project of the third (of four) modules at Turing School of Soft
 The objective of this app is to create API endpoints for a JavaScript front end to consume. The app consumes the Google Geocode API and the DarkSky API to then output six endpoints for current weather for an authorized user. 
 
 ### GET Current Weather
-`GET https://damp-lowlands-57714.herokuapp.com/api/v1/forecast?location=denver,co`
+`GET http://localhost:3000/api/v1/forecast?location=denver,co`
+![alt text]("https://github.com/mmbensalah/sweater_weatherr/blob/master/1.png")
 
 ### Account Creation
-`POST https://damp-lowlands-57714.herokuapp.com/api/v1/users`
+`POST http://localhost:3000/api/v1/users`
 
 ### Login
-`POST https://damp-lowlands-57714.herokuapp.com/api/v1/sessions`
+`POST http://localhost:3000/api/v1/sessions`
 
 ### Favoriting Locations
-`POST https://damp-lowlands-57714.herokuapp.com/api/v1/favorites`
+`POST http://localhost:3000/api/v1/favorites`
 
 ### Listing Favorite Locations
-`GET https://damp-lowlands-57714.herokuapp.com/api/v1/favorites`
+`GET http://localhost:3000/api/v1/favorites`
 
 ### Removing Favorite Locations
-`DELETE https://damp-lowlands-57714.herokuapp.com/api/v1/favorites`
+`DELETE http://localhost:3000/api/v1/favorites`
