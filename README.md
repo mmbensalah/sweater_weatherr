@@ -1,24 +1,25 @@
-# README
+# SweaterWeatherr
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Fourth and final project of the third (of four) modules at Turing School of Software & Design. This project will have a completed JavaScript front end by 01-28-2019. 
 
-Things you may want to cover:
+## Objective
 
-* Ruby version
+The objective of this app is to create API endpoints for a JavaScript front end to consume. The app consumes the Google Geocode API and the DarkSky API to then output six endpoints for current weather for an authorized user. 
 
-* System dependencies
+### GET Current Weather
+`GET https://damp-lowlands-57714.herokuapp.com/api/v1/forecast?location=denver,co`
 
-* Configuration
+### Account Creation
+`POST https://damp-lowlands-57714.herokuapp.com/api/v1/users`
 
-* Database creation
+### Login
+`POST https://damp-lowlands-57714.herokuapp.com/api/v1/sessions`
 
-* Database initialization
+### Favoriting Locations
+`POST https://damp-lowlands-57714.herokuapp.com/api/v1/favorites`
 
-* How to run the test suite
+### Listing Favorite Locations
+`GET https://damp-lowlands-57714.herokuapp.com/api/v1/favorites`
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Removing Favorite Locations
+`DELETE https://damp-lowlands-57714.herokuapp.com/api/v1/favorites`
