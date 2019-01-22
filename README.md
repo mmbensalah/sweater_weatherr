@@ -8,7 +8,7 @@ The objective of this app is to create API endpoints for a JavaScript front end 
 
 ### GET Current Weather
 `GET http://localhost:3000/api/v1/forecast?location=denver,co`
-![alt text]("https://github.com/mmbensalah/sweater_weatherr/blob/master/1.png")
+![alt text](https://github.com/mmbensalah/sweater_weatherr/blob/master/1.png "Get Forecast")
 
 ### Account Creation
 `POST http://localhost:3000/api/v1/users`
