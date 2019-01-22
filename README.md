@@ -12,15 +12,20 @@ The objective of this app is to create API endpoints for a JavaScript front end 
 
 ### Account Creation
 `POST http://localhost:3000/api/v1/users`
+![alt text](https://github.com/mmbensalah/sweater_weatherr/blob/master/2.png "Post Users")
 
 ### Login
 `POST http://localhost:3000/api/v1/sessions`
+![alt text](https://github.com/mmbensalah/sweater_weatherr/blob/master/3.png "Post Sessions")
 
 ### Favoriting Locations
 `POST http://localhost:3000/api/v1/favorites`
+![alt text](https://github.com/mmbensalah/sweater_weatherr/blob/master/4.png "Post Favorites")
 
 ### Listing Favorite Locations
 `GET http://localhost:3000/api/v1/favorites`
+![alt text](https://github.com/mmbensalah/sweater_weatherr/blob/master/5.png "Get Favorites")
 
 ### Removing Favorite Locations
 `DELETE http://localhost:3000/api/v1/favorites`
+![alt text](https://github.com/mmbensalah/sweater_weatherr/blob/master/6.png "Delete Favorites")
