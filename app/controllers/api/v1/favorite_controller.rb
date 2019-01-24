@@ -1,4 +1,5 @@
 class Api::V1::FavoriteController < ApplicationController
+  # before_action :authenticate
   def create
     if params[:api_key]
       Favorite.create(user_id: user.id, location: params[:location])
@@ -10,7 +11,7 @@ class Api::V1::FavoriteController < ApplicationController
 
   def index
     if params[:api_key]
-      favorites = Favorite.where(user_id: user.id)
+      favorites = Favorite.where(user_id: user.id) #user.favorites
       render json: WeatherSerializer.new(favorite_weather(favorites))
     else
       invalid_credentials
