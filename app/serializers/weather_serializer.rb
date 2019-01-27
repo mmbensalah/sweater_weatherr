@@ -9,6 +9,8 @@ class WeatherSerializer
              :visibility ,
              :uv,
              :current_summary,
+             :hourly_summary,
+             :daily_summary,
              :hourly,
              :daily
 end

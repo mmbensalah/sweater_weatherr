@@ -9,6 +9,8 @@ class CurrentWeather
               :visibility ,
               :uv,
               :current_summary,
+              :hourly_summary,
+              :daily_summary,
               :hourly,
               :daily
 
@@ -24,6 +26,8 @@ class CurrentWeather
     @visibility       = data[:currently][:visibility]
     @uv               = data[:currently][:uvIndex]
     @current_summary  = data[:currently][:summary]
+    @hourly_summary   = data[:hourly][:summary]
+    @daily_summary    = data[:daily][:summary]
     @hourly           = hour(data[:hourly][:data])
     @daily            = day(data[:daily][:data])
   end
